@@ -1,6 +1,9 @@
 export interface Work {
   id: number
   image: string
+  title: string
+  description: string
+  category: string
   alt?: string
 }
 
@@ -39,7 +42,7 @@ export interface SectionProps {
 }
 
 export interface ImageGalleryProps {
-  works: Work[]
+  works: readonly Work[]
   columns?: number
   className?: string
 }

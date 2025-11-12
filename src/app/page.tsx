@@ -10,7 +10,7 @@ export default function Home() {
     <main className="w-full">
       <Hero />
       <About />
-      <Services />
+      {/* <Services /> */}
       <Portfolio />
       <Process />
       <Orders />

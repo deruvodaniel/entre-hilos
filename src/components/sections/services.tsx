@@ -2,22 +2,30 @@
 
 import React from "react"
 import { Section } from "@/components/ui/section"
-import { TYPOGRAPHY, getAnimationDelay } from "@/lib/constants"
-import { services } from "@/lib/data"
+import { CONTENT, THEME, SERVICES } from "../../../config/portfolio"
+import * as LucideIcons from "lucide-react"
+
+// Helper para obtener delay de animación
+const getAnimationDelay = (index: number): string => `${index * 100}ms`
 
 export const Services: React.FC = () => {
   return (
     <Section id="services" className="bg-background">
       <h2
-        className="text-[30px] font-light mb-16 text-foreground text-center animate-fade-in-up"
-        style={TYPOGRAPHY.robotoMono30}
+        className="font-light mb-16 text-foreground text-center animate-fade-in-up"
+        style={{ 
+          fontFamily: THEME.fonts.body,
+          fontSize: THEME.fonts.sizes.title
+        }}
       >
-        servicios
+        {CONTENT.texts.services.title}
       </h2>
 
       <div className="grid md:grid-cols-2 lg:grid-cols-4 gap-8">
-        {services.map((service, idx) => {
-          const Icon = service.icon
+        {SERVICES.items.map((service, idx) => {
+          // Obtener el icono dinámicamente desde Lucide
+          const IconComponent = LucideIcons[service.iconName as keyof typeof LucideIcons] as React.ComponentType<{ className?: string }>
+          
           return (
             <div
               key={service.title}
@@ -25,16 +33,19 @@ export const Services: React.FC = () => {
               style={{ animationDelay: getAnimationDelay(idx) }}
             >
               <div
-                className={`w-12 h-12 bg-gradient-to-br ${service.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
+                className={`w-12 h-12 bg-linear-to-br ${service.color} rounded-xl flex items-center justify-center mb-4 group-hover:scale-110 transition-transform`}
               >
-                <Icon className="w-6 h-6 text-white" />
+                <IconComponent className="w-6 h-6 text-white" />
               </div>
               <h3 className="text-xl font-bold mb-3 text-foreground">
                 {service.title}
               </h3>
               <p 
                 className="text-foreground font-medium" 
-                style={TYPOGRAPHY.robotoMono16}
+                style={{ 
+                  fontFamily: THEME.fonts.body,
+                  fontSize: THEME.fonts.sizes.body
+                }}
               >
                 {service.description}
               </p>

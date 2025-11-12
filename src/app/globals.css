@@ -209,3 +209,13 @@
 .animate-rotate-slow {
   animation: rotate-slow 8s linear infinite;
 }
+
+/* Animación para el gradiente del título */
+@keyframes rainbow-flow {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
