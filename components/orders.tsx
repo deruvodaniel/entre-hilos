@@ -1,5 +1,3 @@
-import { MessageCircle } from "lucide-react"
-
 export default function Orders() {
   return (
     <section id="orders" className="py-12 px-4 sm:px-6 lg:px-8 bg-white">

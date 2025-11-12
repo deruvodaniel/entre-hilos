@@ -1,4 +1,5 @@
 import { MessageCircle, Ruler as Rulers, Eye, Sparkles } from "lucide-react"
+import { TYPOGRAPHY, SECTION_CLASSES, getAnimationDelay } from "@/lib/constants"
 
 const steps = [
   {
@@ -21,8 +22,12 @@ const steps = [
 
 export default function Process() {
   return (
-    <section id="process" className="py-12 px-4 sm:px-6 lg:px-8 rounded-3xl mx-4 sm:mx-6 lg:mx-8 my-4" style={{ backgroundColor: '#FBBF24' }}>
-      <div className="max-w-6xl mx-auto">
+    <section 
+      id="process" 
+      className={`${SECTION_CLASSES.base} ${SECTION_CLASSES.yellowBg}`}
+      style={{ backgroundColor: '#FBBF24' }}
+    >
+      <div className={SECTION_CLASSES.container}>
         <div className="flex flex-col md:grid md:grid-cols-2 lg:grid-cols-4 gap-8 justify-between">
           {steps.map((step, idx) => {
             const Icon = step.icon
@@ -30,12 +35,17 @@ export default function Process() {
               <div
                 key={idx}
                 className="flex flex-col items-center text-center animate-fade-in-up"
-                style={{ animationDelay: `${idx * 100}ms` }}
+                style={{ animationDelay: getAnimationDelay(idx) }}
               >
                 <div className="w-16 h-16 flex items-center justify-center mb-4">
                   <Icon size={40} className="text-foreground" />
                 </div>
-                <p className="text-foreground font-light leading-relaxed" style={{ fontFamily: "'Roboto Mono', monospace", fontSize: "16px" }}>{step.text}</p>
+                <p 
+                  className="text-foreground font-light leading-relaxed" 
+                  style={TYPOGRAPHY.robotoMono16}
+                >
+                  {step.text}
+                </p>
               </div>
             )
           })}
